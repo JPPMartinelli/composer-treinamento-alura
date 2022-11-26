@@ -1,0 +1,49 @@
+{
+    "name": "jppmartinelli/buscador-cursos",
+    "description": "Projeto de buscador de cursos, treinamento do Professor Vinícius Dias de composer da Alura.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "João Pedro Martinelli",
+            "email": "76230430+JPPMartinelli@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.5",
+        "symfony/dom-crawler": "^6.1",
+        "symfony/css-selector": "^6.1"
+    },
+    "autoload": {
+        "classmap": [
+            "./teste-classmap/Teste.php"
+        ],
+        "files": [
+            "./teste-files/functions.php"
+        ],
+        "psr-4": {
+            "BuscadorDeCursos\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.7",
+        "phan/phan": "^5.4"
+    }, 
+    "scripts": {
+        "cs": "vendor\\bin\\phpcs --standard=PSR12 src\\", 
+        "phan": "vendor\\bin\\phan  --allow-polyfill-parser src\\Buscador.php",
+        "phpcbf": "vendor\\bin\\phpcbf --standard=PSR12 src\\",
+        "teste": "Teste::metodo",
+        "check": [
+            "@cs",
+            "@phan",
+            "@phpcbf"
+        ],
+        "post-update-cmd": [
+            "@teste"
+        ]
+    },
+    "scripts-descriptions": {
+        "check": "Executa os comandos: cs, phan e phpcbf"
+    }
+}
